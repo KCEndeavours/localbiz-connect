@@ -17,7 +17,7 @@
     
     <main>
 
-        <!-- LOGIN PAGE -->
+        <!-- LOGIN MODAL -->
         <div id="login-modal" class="hidden">
             <div class="login-box">
                 <h2>Login</h2>
@@ -25,8 +25,21 @@
                 <input type="password" id="password" placeholder="Password">
                 <button onclick="login()">Login</button>
                 <button class="close-btn" onclick="hideLogin()">Close</button>
+                <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
             </div>
         </div>
+
+        <!-- Signup Button -->
+        <div id="signup-modal" class="hidden">
+            <div class="login-box">
+                <h2>Sign Up</h2>
+                <input type="text" id="signup-username" placeholder="New Username">
+                <input type="password" id="signup-password" placeholder="New Password">
+                <button onclick="signup()">Sign Up</button>
+                <button class="close-btn" onclick="document.getElementById('signup-modal').style.display='none'">Close</button>
+            </div>
+        </div>
+        
 
        <!-- Add Business Modal (Hidden by Default) -->
         <div id="add-business-modal" class="hidden">

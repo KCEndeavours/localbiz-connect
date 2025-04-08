@@ -32,6 +32,30 @@ document.addEventListener("DOMContentLoaded", function () {
     setupBusinessTags();
 });
 
+
+async function signup() {
+    const username = document.getElementById("signup-username").value.trim();
+    const password = document.getElementById("signup-password").value.trim();
+
+    if (!username || !password) {
+        alert("Please enter both username and password.");
+        return;
+    }
+
+    if (users[username]) {
+        alert("Username already exists!");
+        return;
+    }
+
+    const hashed = await hashPassword(password);
+    users[username] = hashed;
+
+    alert("Signup successful! You can now log in.");
+    document.getElementById("signup-modal").style.display = "none";
+}
+
+
+
 /* Search Function */
 function searchBusinesses() {
     let input = document.getElementById("search-box").value.toLowerCase();
@@ -264,13 +288,20 @@ function showLogin() {
     document.getElementById("login-modal").style.display = "flex";
 }
 
+/* SHOW SIGNUP MODAL */
+function showSignup() {
+    document.getElementById("signup-modal").style.display = "flex";
+    document.getElementById("login-modal").style.display = "none";
+}
+
+
 /* HIDE LOGIN MODAL */
 function hideLogin() {
     document.getElementById("login-modal").style.display = "none";
 }
 
 /* LOGIN FUNCTION */
-function login() {
+async function login() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
@@ -279,12 +310,17 @@ function login() {
         return;
     }
 
-    // Simulate login (replace with actual authentication if needed)
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("username", username);
+    const hashed = await hashPassword(password);
 
-    updateUIAfterLogin(username);
+    if (users[username] && users[username] === hashed) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+        updateUIAfterLogin(username);
+    } else {
+        alert("Invalid credentials.");
+    }
 }
+
 
 /* LOGOUT FUNCTION */
 function logout() {
