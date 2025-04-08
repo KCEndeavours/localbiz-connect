@@ -388,7 +388,7 @@ main {
 }
 
 /* LOGIN MODAL */
-#login-modal {
+#login-modal, #signup-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -747,4 +747,3 @@ main {
         padding: 8px;
     }
 }
-
