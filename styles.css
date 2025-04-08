@@ -1,0 +1,750 @@
+/* IMPORTING GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500&family=Roboto:wght@700&display=swap');
+
+/* GENERAL STYLES */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #1A1A1D;
+    color: #F8F9FA;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #FF7F11, #E63946);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 5px solid #FFD700;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* HEADER TEXT */
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+    font-family: 'Roboto', sans-serif;
+    background: #FFD700;
+    color: #1A1A1D;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    background: #FF7F11;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* MAIN CONTAINER */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* SEARCH & FILTER CONTAINER */
+.search-filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* SEARCH BOX */
+#search-box {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    width: 250px;
+    background: #2C2C34;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#search-box:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 127, 17, 0.5);
+}
+
+/* FILTER DROPDOWN */
+#filter-tags {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    width: 200px;
+    background: linear-gradient(135deg, #FF7F11, #E63946);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* DROPDOWN HOVER EFFECT */
+#filter-tags:hover {
+    background: linear-gradient(135deg, #FFD700, #FF7F11);
+    color: black;
+    transform: scale(1.05);
+}
+
+/* DROPDOWN ACTIVE CLICK EFFECT */
+#filter-tags:active {
+    transform: scale(0.98);
+}
+
+/* DROPDOWN FOCUS (WHEN OPENED) */
+#filter-tags:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* DROPDOWN ARROW CUSTOMIZATION */
+#filter-tags::-ms-expand {
+    display: none; /* Hide default arrow in IE */
+}
+
+#filter-tags::after {
+    content: " ▼";
+    font-size: 0.8rem;
+    color: white;
+}
+
+/* BUSINESS LIST */
+#business-list h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+/* BUSINESS GRID */
+.business-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* BUSINESS CARDS */
+.business-card {
+    background: #2C2C34;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+}
+
+.business-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 127, 17, 0.5);
+}
+
+.business-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #FFD700;
+}
+
+/* BUSINESS DETAILS */
+#business-details {
+    display: none;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+}
+
+/* BUSINESS TAGS */
+.business-tag {
+    display: inline-block;
+    background: #FFD700;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* FLEXBOX FOR DETAILS */
+#details-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.details-text {
+    flex: 1;
+}
+
+.details-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #FFD700;
+}
+
+.details-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+}
+
+.details-image {
+    flex: 1;
+    text-align: center;
+}
+
+.details-image img {
+    width: 250px;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.details-image img:hover {
+    transform: scale(1.05);
+}
+
+/* CUSTOMER FEEDBACK SECTION */
+#customer-feedback {
+    margin-top: 20px;
+    padding: 25px;
+    background: #2C2C34;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 127, 17, 0.3);
+    text-align: left;
+}
+
+#customer-feedback h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFD700;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* REVIEWS CONTAINER */
+#reviews-container {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* REVIEW STYLING */
+.review {
+    background: #1A1A1D;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 127, 17, 0.3);
+}
+
+.review strong {
+    color: #FFD700;
+    font-size: 1.2rem;
+}
+
+.review .stars {
+    color: #FF7F11;
+    font-size: 1.1rem;
+}
+
+/* SCROLLBAR CUSTOMIZATION */
+#reviews-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#reviews-container::-webkit-scrollbar-thumb {
+    background: #FF7F11;
+    border-radius: 10px;
+}
+
+#reviews-container::-webkit-scrollbar-track {
+    background: #2C2C34;
+}
+
+/* FORM STYLING */
+#review-form,
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#review-form input,
+#review-form textarea,
+.login-box input {
+    width: 90%;
+    max-width: 320px;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+#review-form textarea {
+    height: 90px;
+    resize: none;
+}
+
+/* INPUT HOVER & FOCUS */
+#review-form input:focus,
+#review-form textarea:focus,
+.login-box input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 127, 17, 0.5);
+}
+
+/* RATING STARS */
+.rating {
+    font-size: 1.8rem;
+    cursor: pointer;
+    text-align: center;
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.rating span {
+    transition: color 0.3s ease, transform 0.2s ease;
+    color: #FFD700; /* Default unselected color */
+}
+
+.rating span.selected {
+    color: #FF7F11; /* Selected stars */
+}
+
+.rating span:hover,
+.rating span:hover ~ span {
+    color: #FFD700; /* Highlight previous stars on hover */
+    transform: scale(1.1);
+}
+
+
+/* BUTTONS */
+#review-form button,
+.login-box button,
+.back-btn {
+    width: 90%;
+    max-width: 320px;
+    padding: 12px;
+    background: linear-gradient(135deg, #FF7F11, #E63946);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#review-form button:hover,
+.login-box button:hover,
+.back-btn:hover {
+    background: linear-gradient(135deg, #FFD700, #FF7F11);
+    transform: scale(1.05);
+}
+
+.back-btn {
+    background: #E63946;
+}
+
+.back-btn:hover {
+    background: #C92A1D;
+}
+
+/* LOGIN MODAL */
+#login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    backdrop-filter: blur(12px);
+}
+
+.login-box input {
+    width: 75%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.login-box button {
+    width: 80%;
+    margin-top: 7px;
+    padding: 12px;
+    background: linear-gradient(135deg, #FF7F11, #E63946);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+/* ADD BUSINESS BUTTON */
+#add-business-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #FFD700, #FF7F11);
+    color: black;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 127, 17, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: none; /* Initially hidden */
+}
+
+
+#add-business-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 127, 17, 0.6);
+}
+
+
+/* ADD BUSINESS MODAL */
+#add-business-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    overflow-y: auto;
+}
+
+/* MODAL BOX */
+.business-form-box {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 420px;
+    max-width: 95%;
+    box-shadow: 0 4px 12px rgba(255, 127, 17, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.3s ease-in-out;
+}
+
+/* FORM FIELDS */
+.business-form-box input,
+.business-form-box textarea {
+    width: 95%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.business-form-box textarea {
+    height: 90px;
+    resize: none;
+}
+
+/* FILE UPLOAD LABEL */
+.file-label {
+    display: block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.file-label:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* BUSINESS CARD PREVIEW */
+#business-preview {
+    background: #2C2C34;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 15px;
+}
+
+/* BUSINESS LOGO */
+.business-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #FFD700;
+}
+
+/* PREVIEW TEXT */
+#preview-name {
+    color: #FFD700;
+    font-size: 1.5rem;
+}
+
+#preview-description {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* TAGS */
+#preview-tags {
+    background: #FFD700;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* BUTTONS */
+.business-form-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.business-form-box button[type="submit"] {
+    background: linear-gradient(135deg, #FFD700, #FF7F11);
+    color: black;
+    box-shadow: 0 4px 8px rgba(255, 127, 17, 0.5);
+}
+
+.business-form-box button[type="submit"]:hover {
+    background: linear-gradient(135deg, #FF7F11, #E63946);
+    color: white;
+    transform: scale(1.05);
+}
+
+.business-form-box .close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.business-form-box .close-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: black;
+}
+
+
+/* MARKETING TIPS */
+#marketing-tips {
+    margin-top: 30px;
+    padding: 20px;
+    background: #2C2C34;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#marketing-tips h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFD700;
+    font-size: 2rem;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.tip-card {
+    background: #1A1A1D;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+.tip-card:hover {
+    transform: scale(1.05);
+}
+
+/* HIDDEN CLASS */
+.hidden {
+    display: none;
+}
+
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+
+    #add-business-modal {
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+
+    .business-form-box {
+        width: 90%;
+    }
+
+    .business-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    #preview-name {
+        font-size: 1.3rem;
+    }
+
+    #preview-description {
+        font-size: 0.9rem;
+    }
+
+    .business-form-box button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .login-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .search-filter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #search-box,
+    #filter-tags {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .business-container {
+        grid-template-columns: 1fr;
+    }
+
+    #details-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .details-image img {
+        width: 200px;
+    }
+}
+
+/* For Small Screens */
+@media (max-width: 480px) {
+    .business-form-box {
+        width: 95%;
+        max-width: 320px;
+        padding: 15px;
+    }
+
+    .business-logo img {
+        width: 70px;
+        height: 70px;
+    }
+
+    #preview-name {
+        font-size: 1.2rem;
+    }
+
+    #preview-description {
+        font-size: 0.85rem;
+    }
+
+    .business-form-box button {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+}
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalBiz Connect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>LocalBiz Connect</h1>
+        <p>Helping local businesses grow and connect with customers.</p>
+        <button class="login-btn" onclick="showLogin()">Login</button>
+    </header>
+
+    
+    <main>
+
+        <!-- LOGIN PAGE -->
+        <div id="login-modal" class="hidden">
+            <div class="login-box">
+                <h2>Login</h2>
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <button class="close-btn" onclick="hideLogin()">Close</button>
+            </div>
+        </div>
+
+       <!-- Add Business Modal (Hidden by Default) -->
+        <div id="add-business-modal" class="hidden">
+            <div class="business-form-box">
+                <h2>Add Your Business</h2>
+
+                <!-- Logo Upload -->
+                <label for="business-logo-input" class="file-label">Upload Logo</label>
+                <input type="file" id="business-logo-input" accept="image/*">
+                
+                <!-- Business Form -->
+                <form id="add-business-form">
+                    <input type="text" id="business-name-input" placeholder="Business Name" required>
+                    <textarea id="business-description-input" placeholder="Business Description" required></textarea>
+                    <input type="text" id="business-location-input" placeholder="Location" required>
+                    <input type="text" id="business-contact-input" placeholder="Contact Info" required>
+                    <input type="text" id="business-social-input" placeholder="Social Media Links">
+                    <input type="text" id="business-tags-input" placeholder="Tags (comma-separated)" required>
+                    <label for="business-image-input" class="file-label">Upload Cover Image</label>
+                    <input type="file" id="business-image-input" accept="image/*">
+
+                    <!-- Live Preview of Business Card -->
+                    <div id="business-preview" class="business-card">
+                        <div class="business-logo">
+                            <img id="preview-logo" src="img/default-logo.png" alt="Business Logo">
+                        </div>
+                        <h3 id="preview-name">Business Name</h3>
+                        <p id="preview-description">Description of the business...</p>
+                        <span class="business-tag" id="preview-tags">Tags</span>
+                    </div>
+
+                    <button type="submit">Add Business</button>
+                    <button type="button" class="close-btn" onclick="hideAddBusiness()">Close</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Add Business Button (Visible Only When Logged In) -->
+        <button id="add-business-btn" class="hidden" onclick="showAddBusiness()">+ Add Business</button>
+
+
+        <!-- SEARCH & FILTER -->
+        <div class="search-filter-container">
+            <input type="text" id="search-box" placeholder="Search businesses..." onkeyup="searchBusinesses()">
+            <select id="filter-tags" onchange="filterBusinesses()">
+                <option value="all">All Categories</option>
+                <option value="Handmade">Handmade</option>
+                <option value="Tech Services">Tech Services</option>
+                <option value="Retail">Retail</option>
+            </select>
+        </div>
+
+        <section id="business-list">
+            <h2>Featured Businesses</h2>
+            <div class="business-container" id="business-container">
+                <div class="business-card" data-tags="Handmade" onclick="showBusinessDetails('bimj')">
+                    <div class="business-logo">
+                        <img src="img/bimj-logo.jpg" alt="B.I.M.J Enterprise">
+                    </div>
+                    <h3>B.I.M.J Enterprise</h3>
+                    <p>Handcrafted resin, paracord, and crochet handbags.</p>
+                    <span class="business-tag">Handmade</span>
+                </div>
+
+                <div class="business-card" data-tags="Tech Services" onclick="showBusinessDetails('rkp')">
+                    <div class="business-logo">
+                        <img src="img/rkp-logo.jpg" alt="R.K.P Technical Solutions">
+                    </div>
+                    <h3>R.K.P Technical Solutions</h3>
+                    <p>Specialized AC services: installation, cleaning, and maintenance.</p>
+                    <span class="business-tag">Tech Services</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Details Section -->
+        <section id="business-details" class="hidden">
+            <button class="back-btn" onclick="hideDetails()">← Back</button>
+            <div id="details-content">
+                <div class="details-text">
+                    <h2 id="business-name"></h2>
+                    <p><strong>Description:</strong> <span id="business-description"></span></p>
+                    <p><strong>Location:</strong> <span id="business-location"></span></p>
+                    <p><strong>Contact:</strong> <span id="business-contact"></span></p>
+                    <p><strong>Social Media:</strong> <span id="business-social"></span></p>
+                </div>
+                <div class="details-image">
+                    <img id="business-image" src="" alt="Business Image">
+                </div>
+            </div>
+
+            <!-- Customer Feedback Section -->
+            <div id="customer-feedback">
+                <h3>Customer Reviews</h3>
+                <div id="reviews-container"></div>
+                
+                <h3>Leave a Review</h3>
+                <form id="review-form">
+                    <input type="text" id="reviewer-name" placeholder="Your Name" required>
+                    <textarea id="review-text" placeholder="Your Review" required></textarea>
+                    <div class="rating">
+                        <span onclick="setRating(1)">★</span>
+                        <span onclick="setRating(2)">★</span>
+                        <span onclick="setRating(3)">★</span>
+                        <span onclick="setRating(4)">★</span>
+                        <span onclick="setRating(5)">★</span>
+                    </div>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="marketing-tips" class="hidden">
+            <h2>Marketing Tips</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <h3>📢 Social Media Growth</h3>
+                    <p>Consistently post engaging content and interact with followers.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>🎯 Targeted Ads</h3>
+                    <p>Use Facebook and Google Ads to reach the right customers.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>⭐ Customer Reviews</h3>
+                    <p>Encourage happy customers to leave positive reviews.</p>
+                </div>
+            </div>
+
+            <h2>Watch & Learn</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Zh9G3TObMEs" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/HpFQ3MRqFB0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
